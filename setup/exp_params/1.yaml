@@ -1,0 +1,43 @@
+exp_id: 1
+data_id: 1  # save results to results/base_pred/saved_pred_<data_id>.pickle
+test_week: 202414  # 202339 test week, data after test week are not available
+
+
+description: 4 week ahead pred, exp1
+pred_starting_week: 202320  # the first prediction will be [pred_starting_week + 1, pred_starting_week + 4]
+target_regions: 'all'  # regions can either be 'all' or a list of regions, e.g. ['AK', 'CO']
+aheads: [1, 2, 3, 4]  
+true_scale: True  
+total_weeks_number: 500   # maximum weeks
+multi_seed: False
+seed: 1
+
+# ACI parameters (not related with the forecaster)
+one_side_score: False  # one sided: use true - pred, double sided: use absolute residue
+cp_lr: 0.05
+skip_beginning: 0
+sort_CIs: True
+use_prev_scores: False
+use_error_intergrator: False
+scale_factor: 1.5
+err_window: 3
+
+#################################
+# tune the following parameters #
+#################################
+
+smooth: False   # smooth y using running average
+fix_window: True   # only use data in [t-window_size, t] to predict if set to True. Window size is covid_mortality.yaml/data_params/min_sequence_length
+
+# region fine tuning parameters
+region_fine_tuning: True
+rft_epochs: 50  # number of epochs for region fine-tuning
+rft_batch_size: 32  # batch size for region fine-tuning
+
+# week retraining: if False, use model state dict from previous week
+week_retrain: True
+week_retrain_epochs: 20
+retrain_freq: 5
+
+# over-write the parameters from covid_mortality.yaml and seq2seq.yaml
+model_name: Patch_tst

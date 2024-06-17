@@ -1,0 +1,11 @@
+exp_ids: [11, 1, 2, 4]  # the final result will be the combination of these experiments. The first one is the default experiment. The test results in regions defined by region2exp are replaced with prediction from other experiments.
+
+seeds: [2, 1, 2, 4]
+
+output_exp: 2410  # combined exp ids starts from 10000, use 19999 as test exp id
+
+region2exp: {WY: 4}
+
+region2shift: {}
+
+regions2remove: []

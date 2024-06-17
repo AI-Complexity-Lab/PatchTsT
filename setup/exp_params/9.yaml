@@ -1,0 +1,40 @@
+exp_id: 9
+data_id: 9  # save results to results/base_pred/saved_pred_<data_id>.pickle
+test_week: 202414  # 202339 test week, data after test week are not available
+
+
+description: first pred week is 202348, 4 week ahead pred, exp1
+pred_starting_week: 202320  # 202240 starting prediction week, the first prediction will be [pred_starting_week + 1, pred_starting_week + 4]
+target_regions: 'all'  # regions can either be 'all' or a list of regions, e.g. ['AK', 'CO']
+aheads: [1, 2, 3, 4]
+one_side_score: False  # one sided: use true - pred, double sided: use absolute residue
+cp_lr: 0.05
+smooth: False
+fix_window: True
+true_scale: True
+total_weeks_number: 200   # maximum weeks
+skip_beginning: 0
+sort_CIs: True
+use_prev_scores: False
+use_error_intergrator: True
+scale_factor: 1.5
+err_window: 3
+
+multi_seed: False
+seed: 3
+
+# rft
+region_fine_tuning: False
+rft_epochs: 200
+rft_batch_size: 32
+
+# week retraining: if False, use model state dict from previous week
+week_retrain: True
+week_retrain_epochs: 20
+retrain_freq: 5
+
+# over-writing parameters
+model_name: seq2seq
+# regions: 
+#   - AL
+#   - AK
